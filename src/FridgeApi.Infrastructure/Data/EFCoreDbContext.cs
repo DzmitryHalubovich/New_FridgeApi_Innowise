@@ -13,6 +13,7 @@ namespace FridgeApi.Infrastructure.Data
         public EFCoreDbContext(DbContextOptions<EFCoreDbContext> options) : base(options) { }
 
         public DbSet<Fridge> Fridges { get; set; }
+        public DbSet<FridgeModel> FridgeModels { get; set; }
     }
 
 }

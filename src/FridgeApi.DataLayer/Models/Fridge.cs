@@ -16,5 +16,8 @@ namespace FridgeApi.DataLayer.Models
         public string Name { get; set; }
         [MaxLength(100)]
         public string? OwnerName { get; set; }
+        [Required]
+        public int FridgeModelId { get; set; }
+        public FridgeModel FridgeModel { get; set; }
     }
 }

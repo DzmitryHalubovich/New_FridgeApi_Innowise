@@ -21,7 +21,9 @@ namespace FridgeApi_Innowise.Controllers
         [HttpGet("GetAllFridges")]
         public async Task<ActionResult<List<Fridge>>> Get()
         {
-            var fridgeList = await _dbContext.Fridges.ToListAsync();
+            var fridgeList = await _dbContext.Fridges
+                .Include(c=>c.FridgeModel)
+                .ToListAsync();
 
             return fridgeList;
         }
@@ -29,10 +31,13 @@ namespace FridgeApi_Innowise.Controllers
         [HttpGet("GetById")]
         public async Task<ActionResult<Fridge>> GetFridgeById(int id)
         {
-            var fridge = await _dbContext.Fridges.Where(c => c.FridgeId == id).FirstOrDefaultAsync();
+            var fridge = await _dbContext.Fridges
+                .Where(c => c.FridgeId == id)
+                .Include(c=>c.FridgeModel)
+                .FirstOrDefaultAsync();
 
             if (fridge is null)
-                return NotFound();
+                return BadRequest($"Fridge with id = {id} does't exist");
 
             return fridge;
         }
@@ -54,6 +59,19 @@ namespace FridgeApi_Innowise.Controllers
             _dbContext.Fridges.Add(newFridge);
             await _dbContext.SaveChangesAsync();
 
+            return Ok();
+        }
+
+        [HttpDelete("DeleteByID")]
+        public async Task<ActionResult> DeleteFridge(int id)
+        {
+            var checkInFridges = _dbContext.Fridges.Where(c=>c.FridgeId==id).FirstOrDefault();
+
+            if (checkInFridges is null)
+                return BadRequest($"Fridge with id = {id} does't exist");
+
+            _dbContext.Fridges.Remove(checkInFridges);
+            await _dbContext.SaveChangesAsync();
             return Ok();
         }
     }
