@@ -14,6 +14,13 @@ namespace FridgeApi.Infrastructure.Data
 
         public DbSet<Fridge> Fridges { get; set; }
         public DbSet<FridgeModel> FridgeModels { get; set; }
-    }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Fridge>().Property<DateTime>("CreateOn");
+            modelBuilder.Entity<Fridge>().Property<DateTime>("UpdateOn");
+            modelBuilder.Entity<FridgeModel>().Property<DateTime>("CreateOn");
+            modelBuilder.Entity<FridgeModel>().Property<DateTime>("UpdateOn");
+        }
+    }
 }

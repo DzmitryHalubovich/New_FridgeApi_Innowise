@@ -1,5 +1,4 @@
-﻿using FridgeApi.DataLayer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace FridgeApi.DataLayer.DTO
 {
-    public sealed class FridgeDto
+    public sealed class FridgeModelDto
     {
         [Required]
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
-        [MaxLength(100)]
-        public string? OwnerName { get; set; }
-
-        [Required]
-        public int FridgeModelId { get; set; }
+        [MaxLength(4)]
+        public string Year { get; set; }
     }
 }

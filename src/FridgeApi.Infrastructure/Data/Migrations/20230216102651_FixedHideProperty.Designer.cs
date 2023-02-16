@@ -4,6 +4,7 @@ using FridgeApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FridgeApi.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(EFCoreDbContext))]
-    partial class EFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216102651_FixedHideProperty")]
+    partial class FixedHideProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,16 +66,10 @@ namespace FridgeApi.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FridgeModelId"));
 
-                    b.Property<DateTime>("CreateOn")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("UpdateOn")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("Year")
                         .HasMaxLength(4)

@@ -42,7 +42,7 @@ namespace FridgeApi_Innowise.Controllers
             return fridge;
         }
 
-        [HttpPut("CreateNewFridge")]
+        [HttpPost("CreateNewFridge")]
         public async Task<ActionResult<Fridge>> AddNewFridge(FridgeDto fridge)
         {
             var checkInFridges = _dbContext.Fridges.Where(c=>c.Name == fridge.Name).FirstOrDefault();
@@ -54,9 +54,10 @@ namespace FridgeApi_Innowise.Controllers
             {
                 Name = fridge.Name,
                 OwnerName= fridge.OwnerName,
+                FridgeModelId = fridge.FridgeModelId,
             };
 
-            _dbContext.Fridges.Add(newFridge);
+            _dbContext.Fridges.Add(newFridge).Property("CreateOn").CurrentValue = DateTime.Now;
             await _dbContext.SaveChangesAsync();
 
             return Ok();
@@ -72,6 +73,24 @@ namespace FridgeApi_Innowise.Controllers
 
             _dbContext.Fridges.Remove(checkInFridges);
             await _dbContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateFridge(int id, FridgeDto fridge)
+        {
+            var existingFridge = await _dbContext.Fridges.Where(c => c.FridgeId == id).FirstOrDefaultAsync();
+
+            if (existingFridge is null)
+                return BadRequest("Fridge with this id doesn't exist");
+
+            existingFridge.Name = fridge.Name;
+            existingFridge.OwnerName = fridge.OwnerName;
+            existingFridge.FridgeModelId = fridge.FridgeModelId;
+
+            _dbContext.Update(existingFridge);
+            await _dbContext.SaveChangesAsync();
+
             return Ok();
         }
     }
