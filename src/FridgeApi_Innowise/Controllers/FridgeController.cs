@@ -23,6 +23,7 @@ namespace FridgeApi_Innowise.Controllers
         {
             var fridgeList = await _dbContext.Fridges
                 .Include(c=>c.FridgeModel)
+                .Include(c=>c.Products)
                 .ToListAsync();
 
             return fridgeList;

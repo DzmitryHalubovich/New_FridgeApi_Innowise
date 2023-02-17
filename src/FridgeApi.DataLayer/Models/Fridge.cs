@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FridgeApi.DataLayer.Models
@@ -20,5 +21,8 @@ namespace FridgeApi.DataLayer.Models
         [Required]
         public int FridgeModelId { get; set; }
         public FridgeModel FridgeModel { get; set; }
+        public List<Product> Products { get; set; }
+        [JsonIgnore]
+        public List<FridgeProduct> FridgeProducts { get; set; } 
     }
 }
