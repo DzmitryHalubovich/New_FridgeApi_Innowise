@@ -18,7 +18,7 @@ namespace FridgeApi_Innowise.Controllers
             _dbContext= dbContext;
         }
 
-        [HttpGet("GetAllFridges")]
+        [HttpGet("/getAllFridges")]
         public async Task<ActionResult<List<Fridge>>> Get()
         {
             var fridgeList = await _dbContext.Fridges
@@ -29,7 +29,7 @@ namespace FridgeApi_Innowise.Controllers
             return fridgeList;
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("/getById")]
         public async Task<ActionResult<Fridge>> GetFridgeById(int id)
         {
             var fridge = await _dbContext.Fridges
