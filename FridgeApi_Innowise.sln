@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeApi_Innowise", "FridgeApi_Innowise\FridgeApi_Innowise.csproj", "{519F241F-B573-431D-84DA-C2BFDAFCA618}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeApi_Innowise", "src\FridgeApi_Innowise\FridgeApi_Innowise.csproj", "{E297D285-79CA-461C-80BC-673CCC070938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeApi.DataLayer", "src\FridgeApi.DataLayer\FridgeApi.DataLayer.csproj", "{E7BEAC77-561A-4E7D-9E1A-A3BB903C454F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeApi.Infrastructure", "src\FridgeApi.Infrastructure\FridgeApi.Infrastructure.csproj", "{5A19D7B6-283F-489E-AB76-87CF123B1CD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{519F241F-B573-431D-84DA-C2BFDAFCA618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{519F241F-B573-431D-84DA-C2BFDAFCA618}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{519F241F-B573-431D-84DA-C2BFDAFCA618}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{519F241F-B573-431D-84DA-C2BFDAFCA618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E297D285-79CA-461C-80BC-673CCC070938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E297D285-79CA-461C-80BC-673CCC070938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E297D285-79CA-461C-80BC-673CCC070938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E297D285-79CA-461C-80BC-673CCC070938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BEAC77-561A-4E7D-9E1A-A3BB903C454F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BEAC77-561A-4E7D-9E1A-A3BB903C454F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BEAC77-561A-4E7D-9E1A-A3BB903C454F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BEAC77-561A-4E7D-9E1A-A3BB903C454F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A19D7B6-283F-489E-AB76-87CF123B1CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A19D7B6-283F-489E-AB76-87CF123B1CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A19D7B6-283F-489E-AB76-87CF123B1CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A19D7B6-283F-489E-AB76-87CF123B1CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
